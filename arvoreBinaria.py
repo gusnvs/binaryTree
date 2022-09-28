@@ -17,12 +17,12 @@ class arvoreBinaria:
         self.ultimo = None
 
     def buscar(self, valor):
-        if self.raiz == None:
+        if self.raiz == None:  # se a arvore estiver vazia, nao tem como
             return None
         else:
-            aux = self.raiz
+            aux = self.raiz  # começamos pela raiz
 
-            while (valor != aux.valor):
+            while (valor != aux.valor):  # enquanto nao achar o valor
 
                 if valor < aux.valor:
                     aux = aux.fe
@@ -30,26 +30,26 @@ class arvoreBinaria:
                     aux = aux.fd
 
                 if valor == None:
-                    return None
+                    return None  # encontrou uma folha -> sai
 
-            return aux
+            return aux  # terminou o laço e chegou aqui, é porque encontrou o valor
 
     def ultimoNo(self):
         return self.ultimo
 
     def insercao(self, valor):
 
-        novo = Celula(valor)
+        novo = Celula(valor)  # cria um novo No
 
-        if self.raiz is None:
+        if self.raiz is None:  # se nao tiver nenhum no, crie a raiz
             self.raiz = novo
-        else:
+        else:  # se nao for a raiz
             atual = self.raiz
 
             while True:
                 anterior = atual
 
-                if valor < atual.valor:
+                if valor < atual.valor:  # ir para esquerda
                     atual = atual.fe
 
                     if atual == None:
@@ -57,7 +57,7 @@ class arvoreBinaria:
                         self.ultimo = novo
                         return
                 else:
-                    atual = atual.fd
+                    atual = atual.fd  # ir para direita
 
                     if atual == None:
                         anterior.fd = novo
@@ -192,4 +192,10 @@ arv.insercao(75)
 arv.insercao(5)
 arv.insercao(45)
 arv.insercao(22)
-arv.ultimoNo()
+print(arv.ultimoNo())
+arv.remover(75)
+print(arv.ultimoNo())
+arv.remover(22)
+print(arv.ultimoNo())
+arv.insercao(55)
+print(arv.ultimoNo())
